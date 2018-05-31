@@ -106,3 +106,22 @@ someFunc
 ## After modify program
 - `stack build`
 - `stack exec project_name-exe`
+
+## No Using stack
+- make filename.hs
+- `$ ghc -o filename filename.hs`
+- `$ ./filename`
+
+## Multi Thread
+- `ghc -O2 --make multi.hs -threaded`
+- `time ./multi +RTS -N2`
+```
+$ ghc -O2 --make multi.hs -threaded
+[1 of 1] Compiling Main             ( multi.hs, multi.o )
+Linking multi ...
+clang: warning: argument unused during compilation: '-nopie' [-Wunused-command-line-argument]
+clang: warning: argument unused during compilation: '-nopie' [-Wunused-command-line-argument]
+$ time ./multi +RTS -N2
+1405006117752879898543142606244511569936384005711076
+./multi +RTS -N2  1.30s user 0.03s system 140% cpu 0.941 total
+```
